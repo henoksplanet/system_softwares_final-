@@ -42,3 +42,6 @@ void dpl_print( dplist_t * list )
     printf("index element %d = %d\n", i, element);
   }
 }
+
+
+Just a change 
