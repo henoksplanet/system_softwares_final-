@@ -31,9 +31,7 @@ int main(int argc, char *argv[]) {
     PD[i-1] = compute_PD(celldirs, cellspks, 40);
   }
 
-  // print vector of PDs to screen and write to a file
-  show_double_vec(PD, ncells);
-  write_double_vec(PD, ncells, "PDs.txt");
+
 
   return 0;
 }
