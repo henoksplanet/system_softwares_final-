@@ -30,7 +30,9 @@ int main(void)
 
 
 
-void dpl_print( dplist_t * list )
+
+
+/* void dpl_print( dplist_t * list )
 {
   element_t element;
   int i, length;
@@ -42,6 +44,4 @@ void dpl_print( dplist_t * list )
     printf("index element %d = %d\n", i, element);
   }
 }
-
-
-Just a change 
+ */
