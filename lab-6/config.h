@@ -5,14 +5,32 @@
 #include <time.h>
 
 typedef uint16_t sensor_id_t;
-typedef double sensor_value_t;     
+
+typedef uint16_t room_id_t;
+typedef	double running_avg;
+typedef double sensor_value_t;  
+typedef time_t last_modified;   
 typedef time_t sensor_ts_t;         // UTC timestamp as returned by time() - notice that the size of time_t is different on 32/64 bit machine
 
-typedef struct {
+typedef struct {		//blueprint for the sensor data
   sensor_id_t id;
   sensor_value_t value;
   sensor_ts_t ts;
 } sensor_data_t;
+
+typedef struct {		//blueprint for the sensor node
+  sensor_id_t id;
+  room_id_t   room_id;
+  running_avg running_avg_t;
+  last_modified	last_modified_t; 
+} sensor_node;
+
+
+
+
+
+
+
 
 #endif /* _CONFIG_H_ */
 
