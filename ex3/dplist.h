@@ -1,7 +1,7 @@
 #ifndef DPLIST_H_
 #define DPLIST_H_
 
-typedef int element_t;
+typedef int* element_t;
 
 typedef struct dplist dplist_t; // slist_t is a struct containing at least a head pointer to the start of the list; later function pointers to element_copy, element_compare, element_free, etc. will be added
 

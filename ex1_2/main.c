@@ -9,31 +9,22 @@ void dpl_print( dplist_t * list );
 
 int main(void)
 {
-  list = dpl_create();  
+  list = dpl_create();
+  
+  dpl_insert_at_index(list,1,0);
+  dpl_insert_at_index(list,2,1);
+  dpl_insert_at_index(list,4,5);
+  
+  printf("list size = %d\n", dpl_size(list) );
 
-dpl_insert_at_index(list,1,0); 
-dpl_insert_at_index(list,2,1);
-dpl_insert_at_index(list,3,2);
-dpl_insert_at_index(list,4,3);
-dpl_insert_at_index(list,5,4);
-dpl_insert_at_index(list,6,5);
-
-
-
-
-printf("ref at -8:%p\n",dpl_get_reference_at_index( list, 90));
-//printf("ref at -8:%p\n",dpl_get_reference_at_index( list, 90));
-
-
-printf("size of list is:%i\n",dpl_size(list));
-
-
-
-
-dpl_print(list);
-
-dpl_free(&list);
-
+  dpl_insert_at_index(list,3,2);
+  dpl_print( list );
+  printf("element '4' has index = %d\n", dpl_get_index_of_element(list, 4) );
+  list = dpl_remove_at_index(list,-5);
+  list = dpl_remove_at_index(list, 20);
+  dpl_print(list);
+  dpl_free(&list);
+  
   return 0;
 }
 

@@ -47,7 +47,9 @@ struct dplist {
 
 dplist_t * dpl_create ()
 {
+
   dplist_t * list;
+  dplist_node_t * dummynode;
   list = malloc(sizeof(struct dplist));
   DPLIST_ERR_HANDLER(list==NULL,DPLIST_MEMORY_ERROR);
   list->head = NULL;  
@@ -58,6 +60,10 @@ dplist_t * dpl_create ()
 
 void dpl_free( dplist_t ** list )
 {
+
+
+  assert(*list!=NULL);
+
 /* if(dpl_size(*list)==0){
 
 free((*list)->head);
@@ -66,9 +72,17 @@ free(*list);
 
 return;
 } */
+
+
+if(dpl_size(*list)==0){
+
+//(*list)->head->element=5;
+
+}
+
 int initial=dpl_size(*list);
 
- for(int i=initial;i>1;i--){
+ for(int i=initial+1;i>1;i--){
 dpl_remove_at_index((*list),i);
 };
 
@@ -96,20 +110,22 @@ free(*list);
 dplist_t * dpl_insert_at_index( dplist_t * list, element_t element, int index)
 {
 
-  if(dpl_size(list)==1 && list->head->element==-56000){
+
+//  assert(dpl_get_reference_at_index(list,index)==NULL);
+
+/*  /*  if(dpl_size(list)==0/*  && list->head->element==-56000 ){
 
   list->head->element=element;
   return list;
   }
-  
-
+/* 
   if(index<0 && list->head->element==-56000){
     
   list->head->element=element;
   return list;
   }
 
-
+ */
 
 
 
@@ -118,8 +134,9 @@ dplist_t * dpl_insert_at_index( dplist_t * list, element_t element, int index)
   list_node = malloc(sizeof(dplist_node_t));
   DPLIST_ERR_HANDLER(list_node==NULL,DPLIST_MEMORY_ERROR);
   list_node->element = element;
+  
   // pointer drawing breakpoint
-  if (list->head == NULL)  
+  if (list->head == NULL || list->head->element==-56000 )  //added case for pre-occupied list
   { // covers case 1 
     list_node->prev = NULL;
     list_node->next = NULL;
@@ -161,6 +178,12 @@ dplist_t * dpl_remove_at_index( dplist_t * list, int index)
 {
 
 
+
+
+
+
+
+
 int counter=0;
 
 dplist_t* currentList=list;
@@ -175,6 +198,12 @@ dplist_node_t* current=list->head;
   
   } */
 
+if( list->head->element==-56000){
+
+list->head->element=-56000;
+
+return currentList;
+}
 
 
 
@@ -217,18 +246,21 @@ return currentList;
 } */
 
 
-else if(dpl_size(list)==1 || dpl_size(list)==0){
+else if(dpl_size(list)==1  || ((dpl_size(list)==0 & list->head->element==-56000))){
    
+//   printf("hello");
 
-   list->head->element=-56000;
-   
-   
+   list->head->element=-56000; 
    // printf("--%i--",currentList->head->element);
     //currentList->head=NULL;
    //free(currentList->head);
     //list->head=NULL;
-    //return currentList;
+
+
+    return currentList;
 }
+
+
 
 
 
@@ -298,10 +330,8 @@ dplist_node_t * dpl_get_reference_at_index( dplist_t * list, int index )
 {
 
 
-  if(dpl_size(list)==1 && list->head->element==-56000){
+  if(dpl_size(list)==0 && list->head->element==-56000){
    
-
-
   return NULL;
 
   }
@@ -366,7 +396,7 @@ return current->element;
 
 
 }
-
+/* 
 
 void dpl_print( dplist_t * list ){
 int counter=0;
@@ -385,11 +415,11 @@ dplist_node_t* current=list->head;
     printf("index %d has element = %d\n\n",counter,element);
     counter++;
     current=current->next;
-  }
+  } */
 
 
 
-}
+
 
 int dpl_get_index_of_element( dplist_t * list, element_t element )
 {
