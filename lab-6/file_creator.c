@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#define DEBUG 1
 
 #define FILE_ERROR(fp,error_msg) 	do { \
 					  if ((fp)==NULL) { \
@@ -72,4 +73,3 @@ int main( int argc, char *argv[] )
   
   return 0;
 }
-
