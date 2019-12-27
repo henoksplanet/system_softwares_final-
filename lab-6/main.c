@@ -10,6 +10,7 @@ int main(void)
         FILE * fp= fopen("room_sensor.map","r");
         FILE * fp2=  fopen("sensor_data","rb");
         datamgr_parse_sensor_files(fp,fp2);
+       
         displayAll();
         
        printf("room id of the sensor is : %i\n",datamgr_get_room_id(112));
