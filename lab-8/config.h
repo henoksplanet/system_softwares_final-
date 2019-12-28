@@ -11,11 +11,13 @@ typedef	double running_avg;
 typedef double sensor_value_t;  
 typedef time_t last_modified;   
 typedef time_t sensor_ts_t;         // UTC timestamp as returned by time() - notice that the size of time_t is different on 32/64 bit machine
-
+typedef int status;
 typedef struct {		//blueprint for the sensor data
   sensor_id_t id;
   sensor_value_t value;
   sensor_ts_t ts;
+  status read_by_data_mgr;
+  status read_by_conn_mgr;
 } sensor_data_t;
 
 typedef struct {		//blueprint for the sensor node

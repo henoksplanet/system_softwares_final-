@@ -29,7 +29,7 @@ typedef struct sensor{
     time_t  last_update;
 }sensor;
 
-sensor *copy_employee(sensor *old_sensor) {
+sensor *copy_sensor(sensor *old_sensor) {
     sensor *new_sensor = (sensor*)malloc(sizeof(sensor));
     new_sensor->sensor_id=old_sensor->sensor_id;
     new_sensor->fd_num = old_sensor->fd_num;
@@ -38,13 +38,13 @@ sensor *copy_employee(sensor *old_sensor) {
     return new_sensor;
 }
 
-void free_employee(sensor **sensor_to_free) {
+void free_sensor(sensor **sensor_to_free) {
     free(*sensor_to_free);
     *sensor_to_free = NULL;
     return;
 }
 
-int compare_employee(sensor *sensor1, sensor *sensor2) {
+int compare_sensor(sensor *sensor1, sensor *sensor2) {
     if(sensor1->fd_num > sensor2->fd_num) return 1;
     if(sensor1->fd_num < sensor2->fd_num) return -1;
     return 0;
@@ -71,9 +71,9 @@ printf("listening at port %i\n",SERVER_PORT);
 
     
 
-    list = dpl_create(  (void *(*)(void *))copy_employee,
-                        (void (*)(void **))free_employee,
-                        (int (*)(void *, void *))compare_employee
+    list = dpl_create(  (void *(*)(void *))copy_sensor,
+                        (void (*)(void **))free_sensor,
+                        (int (*)(void *, void *))compare_sensor
                     );
 //added by me 
 
