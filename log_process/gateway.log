@@ -1,0 +1,4 @@
+1	1577631996	Connection to SQL server established
+2	1577631996	New table sensorData created
+3	1577631999	A sensor node with 15 has opened a new connection
+4	1577632003	A sensor node with 15 has  closed the connection
